@@ -1,9 +1,10 @@
-import {Button, Image, Stack} from "react-bootstrap";
+import {Image, Stack} from "react-bootstrap";
 import GenrePill from "./GenrePill.jsx";
+import {HandThumbsDown, HandThumbsUp, Heart} from "react-bootstrap-icons";
 
 export const MovieDetail = ({movie}) => {
 
-    function convertMinsToHoursMins(mins) {
+    function convertMinutes(mins) {
         let hours = Math.floor(mins / 60);
         let minutes = mins % 60;
         return `${hours}hrs, ${minutes}mins`;
@@ -23,11 +24,11 @@ export const MovieDetail = ({movie}) => {
                     ))}
                 </div>
                 <p style={{fontSize: '1.4rem', color: "white"}}>{movie.overview}</p>
-                <p style={{fontSize: '1.4rem', color: "white"}}>Runtime: {convertMinsToHoursMins(movie.runtime)}</p>
-                <div style={{display: "flex", gap: '20%' }}>
-                    <Button>Add to Watch List</Button>
-                    <Button>Like</Button>
-                    <Button>Dislike</Button>
+                <p style={{fontSize: '1.4rem', color: "white"}}>Runtime: {convertMinutes(movie.runtime)}</p>
+                <div style={{display: "flex", gap: '10%'}}>
+                    <Heart size="48" color="white"/>
+                    <HandThumbsUp size="48" color='white'/>
+                    <HandThumbsDown size="48" color='white'/>
                 </div>
             </Stack>
         </div>
