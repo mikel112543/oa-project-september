@@ -1,0 +1,10 @@
+.movie-card {
+    transition: transform 0.2s;
+    border-radius: 20px;
+    border-color: black;
+}
+
+.movie-card:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
