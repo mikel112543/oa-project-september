@@ -5,6 +5,16 @@
     bottom: 0;
     left: 0;
     background-size: cover;
-    background-color: black;
+    filter: blur(5px);
+    background-color: #1e0f40;
     z-index: -1;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
 }

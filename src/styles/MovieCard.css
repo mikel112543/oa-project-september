@@ -1,7 +1,9 @@
 .movie-card {
     transition: transform 0.2s;
-    border-radius: 20px;
-    border-color: black;
+    border-radius: 50px;
+    border-color: transparent;
+    border-width: 0;
+    color: transparent;
 }
 
 .movie-card:hover {

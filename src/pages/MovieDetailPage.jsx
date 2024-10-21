@@ -46,6 +46,7 @@ export const MovieDetailPage = () => {
     return (
         <>
             <div className="bg" style={{backgroundImage: `url(${movie?.backdropPath})`}}>
+                <div className='overlay'></div>
             </div>
             <Container>
                 {loading ? (
@@ -55,7 +56,7 @@ export const MovieDetailPage = () => {
                         justifyContent: 'center',
                         height: '100vh'
                     }}>
-                        <Spinner animation="border" role="status"/>
+                        <Spinner animation="border" role="status" variant='light'/>
                     </div>
                 ) : error ? (<p>Error: {error}</p>) :
                     (

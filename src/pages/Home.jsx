@@ -9,12 +9,12 @@ const POPULAR_URL = "http://localhost:3000/movies/popularMovies";
 export const Home = () => {
     return (
         <>
-            <div className='bg'>
+            <div className='home-background'>
             </div>
             <Container fluid className='home-container'>
                 <Row>
-                    <Col>
-                        <h2 style={{color: "white"}}>Trending Movies</h2>
+                    <Col style={{marginLeft: '5%'}}>
+                        <h1 style={{color: "white"}}>Trending Movies</h1>
                     </Col>
                 </Row>
                 <Row>
@@ -23,11 +23,11 @@ export const Home = () => {
                     </Col>
                 </Row>
                 <Row>
-                    <Col>
-                        <h2 style={{color: "white"}}>Popular Movies</h2>
+                    <Col style={{marginLeft: '5%'}}>
+                        <h1 style={{color: "white"}}>Popular Movies</h1>
                     </Col>
                 </Row>
-                <Row style={{marginTop: '20px'}}>
+                <Row style={{marginTop: '20px', marginLeft: '5%', marginRight: '5%'}}>
                     <MovieList url={POPULAR_URL} title={"Popular Movies"}/>
                 </Row>
             </Container>

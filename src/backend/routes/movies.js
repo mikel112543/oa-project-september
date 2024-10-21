@@ -18,8 +18,9 @@ router.get("/trendingMovies", async (req, res) => {
 
 router.get("/popularMovies", async (req, res) => {
     try {
+        const page = req.query.page || 1;
         console.log('Getting Popular Movies...')
-        const movies = await getPopularMovies();
+        const movies = await getPopularMovies(page);
         res.send(movies)
     } catch (e) {
         console.error(e.message)

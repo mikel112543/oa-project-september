@@ -26,8 +26,8 @@ export const getTrendingMovies = async () => {
     return generateDTOs(movies)
 }
 
-export const getPopularMovies = async () => {
-    const movies = await getPopularMoviesController();
+export const getPopularMovies = async (page) => {
+    const movies = await getPopularMoviesController(page);
     return generateDTOs(movies)
 }
 

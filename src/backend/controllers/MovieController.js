@@ -15,9 +15,9 @@ export const getTrendingMoviesController = async () => {
     }
 }
 
-export const getPopularMoviesController = async () => {
+export const getPopularMoviesController = async (page) => {
     try {
-        const response = await axios.get("https://api.themoviedb.org/3/movie/popular?language=en-US&page=1", {
+        const response = await axios.get(`https://api.themoviedb.org/3/movie/popular?language=en-US&page=${page}`, {
             headers: {
                 Authorization: `Bearer ${process.env.ACCESS_TOKEN}`
             }
