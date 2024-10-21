@@ -1,12 +1,20 @@
-import {Col, Container, Row} from "react-bootstrap";
+import {Button, Col, Container, Row} from "react-bootstrap";
 import {MovieCarousel} from "../components/MovieCarousel.jsx";
 import {MovieList} from "../components/MovieList.jsx";
 import "../styles/Home.css"
+import {useRef, useState} from "react";
 
 const TRENDING_URL = `http://localhost:3000/movies/trendingMovies`;
 const POPULAR_URL = "http://localhost:3000/movies/popularMovies";
 
 export const Home = () => {
+    const [page, setPage] = useState(1)
+    const scrollRef = useRef(0); // Ref to store scroll position
+
+    const loadNextPage = () => {
+        setPage(page + 1)
+    }
+
     return (
         <>
             <div className='home-background'>
@@ -28,7 +36,19 @@ export const Home = () => {
                     </Col>
                 </Row>
                 <Row style={{marginTop: '20px', marginLeft: '5%', marginRight: '5%'}}>
-                    <MovieList url={POPULAR_URL} title={"Popular Movies"}/>
+                    <MovieList url={POPULAR_URL} title={"Popular Movies"} page={page}/>
+                </Row>
+                <Row>
+                    <Col xs={12}>
+                        <div style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            marginBottom: '2%',
+                            justifyContent: 'center'
+                        }}>
+                            <Button onClick={loadNextPage} variant="outline-light">Load More</Button>
+                        </div>
+                    </Col>
                 </Row>
             </Container>
         </>

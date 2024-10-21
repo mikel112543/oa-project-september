@@ -4,18 +4,10 @@ import {useEffect, useRef, useState} from "react";
 import axios from "axios";
 
 
-export const MovieList = ({url, title}) => {
+export const MovieList = ({url, page}) => {
     const [movies, setMovies] = useState([])
-    const [page, setPage] = useState(1)
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(null)
-
-    const scrollRef = useRef(0); // Ref to store scroll position
-
-    const loadNextPage = () => {
-        scrollRef.current = window.scrollY;
-        setPage(page + 1)
-    }
 
     useEffect(() => {
         const fetchMovies = async () => {
@@ -39,7 +31,6 @@ export const MovieList = ({url, title}) => {
             } finally {
                 console.log("Fetch finished")
                 setLoading(false)
-                window.scrollTo(0, scrollRef.current);
             }
         }
         fetchMovies()
@@ -65,13 +56,6 @@ export const MovieList = ({url, title}) => {
                                 <MovieCard {...movie}/>
                             </Col>
                         ))}
-                        <Row>
-                            <Col xs={12}>
-                                <div style={{display: 'flex', alignItems: 'center', marginBottom: '2%', justifyContent:'center'}}>
-                                    <Button onClick={loadNextPage} variant="outline-light">Load More</Button>
-                                </div>
-                            </Col>
-                        </Row>
                     </>)}
         </>
     )
