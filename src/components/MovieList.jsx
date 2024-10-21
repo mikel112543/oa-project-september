@@ -35,11 +35,19 @@ export const MovieList = ({url, title}) => {
         <>
             {
                 loading ? (
-                    <Spinner animation="border"/>
+                    <div style={{
+                        display: "flex",
+                        width: '100%',
+                        height: '40vh',
+                        alignItems: 'center',
+                        justifyContent: 'center'
+                    }}>
+                        <Spinner animation="border"/>
+                    </div>
                 ) : error ? (<h1>Error: ${error}</h1>) : (
                     movies.map((movie, index) => (
-                            <Col key={index} sm={8} md={2} className='mb-5'>
-                                <MovieCard {...movie}/>
+                        <Col key={index} sm={8} md={2} className='mb-5'>
+                        <MovieCard {...movie}/>
                             </Col>
                         )
                     ))}

@@ -50,7 +50,9 @@ export const MovieCarousel = ({url}) => {
 
             <Carousel>
                 {loadingMovies ? (
+                    <div style={{display: "flex", width: '100%', height: '40vh', alignItems: 'center', justifyContent: 'center'}}>
                     <Spinner animation="border"/>
+                    </div>
                 ) : (
                     movieChunks.map((chunk, chunkIndex) => (
                             <Carousel.Item key={chunkIndex}>

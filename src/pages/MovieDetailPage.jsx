@@ -1,7 +1,7 @@
 import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import axios from "axios";
-import {Col, Container, Image, Row} from "react-bootstrap";
+import {Col, Container, Image, Row, Spinner} from "react-bootstrap";
 import {MovieDetail} from "../components/MovieDetail.jsx";
 import "../styles/MovieDetailPage.css"
 
@@ -49,7 +49,14 @@ export const MovieDetailPage = () => {
             </div>
             <Container>
                 {loading ? (
-                    <p>Loading...</p>
+                    <div style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        height: '100vh'
+                    }}>
+                        <Spinner animation="border" role="status"/>
+                    </div>
                 ) : error ? (<p>Error: {error}</p>) :
                     (
                         <Row style={{marginTop: '15%'}}>

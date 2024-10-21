@@ -2,6 +2,8 @@ import {Button, Container, Form, FormControl, Nav, Navbar} from "react-bootstrap
 import {useState} from "react";
 import axios from "axios";
 import "../styles/CustomNavbar.css"
+import {Home} from "../pages/Home.jsx";
+import {House, HouseFill} from "react-bootstrap-icons";
 
 // This is a basic navbar component that has some search functionality
 // There is a Form input with the search bar which tracks the keystrokes through the onChange method
@@ -45,7 +47,14 @@ const CustomNavbar = ({setSearchResults, url}) => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link style={{color: "white"}} onClick={handleHomeClick} href="/">Home</Nav.Link>
+
+
+                        <Nav.Link style={{color: "white"}} onClick={handleHomeClick} href="/">
+                            <div style={{display: "flex", justifyContent: 'center', gap: 10}}>
+                                <HouseFill size='24' color='white'/>
+                                <p>Home</p>
+                            </div>
+                        </Nav.Link>
                     </Nav>
                     <Form className="d-flex" onSubmit={handleSearch}>
                         <FormControl

@@ -1,4 +1,4 @@
-
+import './App.css'
 import './styles/SortButton.css'
 import {Route, Routes} from "react-router-dom";
 import {MovieDetailPage} from "./pages/MovieDetailPage.jsx";
