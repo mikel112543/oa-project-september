@@ -1,9 +1,8 @@
-import './App.css'
-import './styles/SortButton.css'
+
 import {Route, Routes} from "react-router-dom";
-import {MovieDetailPage} from "./pages/MovieDetailPage.jsx";
+import {MovieDetailPage} from './frontend/pages/MovieDetailPage.jsx';
 import {Layout} from "./layout.jsx";
-import {Home} from "./pages/Home.jsx";
+import {Home} from "./frontend/pages/Home.jsx";
 
 
 function App() {

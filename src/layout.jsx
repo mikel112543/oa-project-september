@@ -1,4 +1,4 @@
-import CustomNavbar from "./components/CustomNavbar.jsx";
+import CustomNavbar from "./frontend/components/CustomNavbar.jsx";
 
 export const Layout = ({children}) => (
     <>

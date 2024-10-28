@@ -1,4 +1,5 @@
 import axios from "axios";
+import db from "../db.js";
 
 export const getTrendingMoviesController = async () => {
     try {
@@ -58,5 +59,14 @@ export const getMovieByIdController = async (movieId) => {
     } catch (e) {
         console.error('Error fetching trending movies: ', e)
         throw e
+    }
+}
+
+export const bookmarkMovieController = async (movieId) => {
+    try {
+        return await db.query('INSERT INTO favouriteMovies (id) VALUES (?)',
+            movieId)
+    } catch (e) {
+        console.error('Could not insert bookmark')
     }
 }

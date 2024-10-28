@@ -1,10 +1,13 @@
 import {TrendingMovieDTO} from "../dtos/TrendingMovieDTO.js";
 import {
+    bookmarkMovieController,
     getMovieByIdController,
-    getMoviesBySearchController, getPopularMoviesController,
+    getMoviesBySearchController,
+    getPopularMoviesController,
     getTrendingMoviesController
 } from "../controllers/MovieController.js";
 import {MovieDTO} from "../dtos/MovieDTO.js";
+import db from "../db.js";
 
 
 export const generateDTOs = (data, dtoType = 'trending') => {
@@ -17,8 +20,8 @@ export const generateDTOs = (data, dtoType = 'trending') => {
 }
 
 export const generateMovieDetails = (movie) => {
-    const {backdrop_path, release_date, genres, poster_path, title, id, runtime, overview, popularity} = movie
-    return new MovieDTO(title, popularity, release_date, poster_path, id, backdrop_path, genres, overview, runtime)
+    const {backdrop_path, release_date, genres, poster_path, title, id, runtime, overview, popularity, isBookmarked} = movie
+    return new MovieDTO(title, popularity, release_date, poster_path, id, backdrop_path, genres, overview, runtime, isBookmarked)
 }
 
 export const getTrendingMovies = async () => {
@@ -38,5 +41,16 @@ export const getMoviesBySearch = async (searchQuery) => {
 
 export const getMovieById = async (movieId) => {
     const movie = await getMovieByIdController(movieId)
+    let bookmarked = await getMovieByIdFromDb(movieId)
+    movie.isBookmarked = bookmarked.length > 0;
     return generateMovieDetails(movie)
+}
+
+export const bookmarkMovie = async (movieId) => {
+    return await bookmarkMovieController(movieId)
+}
+
+const getMovieByIdFromDb = async (movieId) => {
+    const [rows] = await db.query('SELECT id FROM favouriteMovies WHERE id = ?', [movieId]);
+    return rows;
 }

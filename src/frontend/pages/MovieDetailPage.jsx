@@ -60,7 +60,7 @@ export const MovieDetailPage = () => {
                     </div>
                 ) : error ? (<p>Error: {error}</p>) :
                     (
-                        <Row style={{marginTop: '15%'}}>
+                        <Row style={{marginTop: '10%'}}>
                             <Col xs={12}>
                                 {movie && Object.keys(movie).length > 0 ?
                                     <MovieDetail movie={movie}/>

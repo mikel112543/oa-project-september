@@ -1,5 +1,5 @@
 export class MovieDTO {
-    constructor(title, popularity, releaseDate, posterPath, movieId, backdropPath, genres, overview, runtime) {
+    constructor(title, popularity, releaseDate, posterPath, movieId, backdropPath, genres, overview, runtime, isBookmarked) {
         this.title = title;
         this.popularity = popularity;
         this.releaseDate = releaseDate;
@@ -9,5 +9,6 @@ export class MovieDTO {
         this.genres = genres || [];
         this.overview = overview;
         this.runtime = runtime;
+        this.isBookmarked = isBookmarked;
     }
 }

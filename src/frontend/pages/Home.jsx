@@ -2,14 +2,13 @@ import {Button, Col, Container, Row} from "react-bootstrap";
 import {MovieCarousel} from "../components/MovieCarousel.jsx";
 import {MovieList} from "../components/MovieList.jsx";
 import "../styles/Home.css"
-import {useRef, useState} from "react";
+import {useEffect, useState} from "react";
 
 const TRENDING_URL = `http://localhost:3000/movies/trendingMovies`;
 const POPULAR_URL = "http://localhost:3000/movies/popularMovies";
 
 export const Home = () => {
     const [page, setPage] = useState(1)
-    const scrollRef = useRef(0); // Ref to store scroll position
 
     const loadNextPage = () => {
         setPage(page + 1)

@@ -1,6 +1,14 @@
 import express from "express";
-import {getMovieById, getMoviesBySearch, getPopularMovies, getTrendingMovies} from "../models/MovieModal.js";
-import {getMoviesBySearchController} from "../controllers/MovieController.js";
+import {
+    bookmarkMovie,
+    getMovieById,
+    getMoviesBySearch,
+    getPopularMovies,
+    getTrendingMovies
+} from "../models/MovieModal.js";
+import req from "express/lib/request.js";
+import * as console from "node:console";
+import res from "express/lib/response.js";
 
 const router = express.Router();
 
@@ -48,6 +56,24 @@ router.get("/movieDetail", async (req, res) => {
         res.send(movie)
     } catch (e) {
         res.status(400).send("Internal Server Error")
+    }
+})
+
+router.post('/bookmarkMovie', async (req, res) => {
+    try {
+        const {movieId} = req.body;
+        const dbResponse = await bookmarkMovie(movieId);
+        res.send(dbResponse)
+    } catch (e) {
+        res.status(400).send("Internal Server Error")
+    }
+})
+
+router.get('/bookmarkMovie', async (req, res) => {
+    try {
+        const movieId = req.query.movieId;
+    }  catch (e) {
+        console.error(e.message)
     }
 })
 
